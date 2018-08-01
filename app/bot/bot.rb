@@ -4,7 +4,7 @@ include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
 #!/bin/sh
-FB_ACCESS_TOKEN=$1
+FB_ACCESS_TOKEN=EAADE0MAh5WMBAA45ZCgM2gcAuG1SDKarP25UiiNzRwjcAFG68ZBn2o4zMfDHX5ULaSNhSbR8U5CxwN0zaiL8XhojXOuPUK83RsCMkPgqua1D7K1pxW0TpfawPcVRW9OpQgVkbyrmhUEYv4S7Rnun1T8xZBPqr5o6mvIRYIbwAZDZD
 
 curl -X POST -H "Content-Type: application/json" -d '{
   "persistent_menu":[
