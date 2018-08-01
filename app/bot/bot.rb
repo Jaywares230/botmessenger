@@ -5,33 +5,18 @@ Dotenv.load
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
-{
-  "persistent_menu":[
+Facebook::Messenger::Profile.set({
+  greeting: [
     {
-      "locale":"default",
-      "composer_input_disabled": true,
-      "call_to_actions":[
-        {
-          "title":"My Account",
-          "type":"nested",
-          "call_to_actions":[
-            {
-              "title":"Pay Bill",
-              "type":"postback",
-              "payload":"PAYBILL_PAYLOAD"
-            },
-            {
-              "type":"web_url",
-              "title":"Latest News",
-              "url":"https://www.messenger.com/",
-              "webview_height_ratio":"full"
-            }
-          ]
-        }
-      ]
+      locale: 'default',
+      text: 'Welcome to your new bot overlord!'
+    },
+    {
+      locale: 'fr_FR',
+      text: 'Bienvenue dans le bot du Wagon !'
     }
   ]
-}
+}, access_token: ENV['ACCESS_TOKEN'])
 
 Bot.on :message do |message|
   message.reply(text: 'Hello, human! #{ENV["ACCESS_TOKEN"]}')
