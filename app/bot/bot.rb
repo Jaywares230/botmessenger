@@ -1,5 +1,7 @@
 require 'facebook/messenger'
 include Facebook::Messenger
+require "dotenv"
+Dotenv.load
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 

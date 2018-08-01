@@ -18,7 +18,8 @@ gem 'bootstrap'
 gem 'autoprefixer-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'facebook-messenger'
-
+gem 'dotenv-rails'
+gem 'dotenv'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug',  '9.0.6', platform: :mri
