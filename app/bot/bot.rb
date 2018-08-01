@@ -18,6 +18,12 @@ Facebook::Messenger::Profile.set({
   ]
 }, access_token: ENV['ACCESS_TOKEN'])
 
+Facebook::Messenger::Profile.set({
+  get_started: {
+    payload: 'GET_STARTED_PAYLOAD'
+  }
+}, access_token: ENV['ACCESS_TOKEN'])
+
 Bot.on :message do |message|
   message.reply(text: 'Hello, human! #{ENV["ACCESS_TOKEN"]}')
   message.reply(
