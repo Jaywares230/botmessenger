@@ -3,75 +3,33 @@ include Facebook::Messenger
 
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
-#!/bin/sh
-FB_ACCESS_TOKEN=EAADE0MAh5WMBAA45ZCgM2gcAuG1SDKarP25UiiNzRwjcAFG68ZBn2o4zMfDHX5ULaSNhSbR8U5CxwN0zaiL8XhojXOuPUK83RsCMkPgqua1D7K1pxW0TpfawPcVRW9OpQgVkbyrmhUEYv4S7Rnun1T8xZBPqr5o6mvIRYIbwAZDZD
-
-curl -X POST -H "Content-Type: application/json" -d '{
+{
   "persistent_menu":[
     {
       "locale":"default",
-      "composer_input_disabled":false,
+      "composer_input_disabled": true,
       "call_to_actions":[
         {
-          "title":"🌈 Sujets de discussion",
+          "title":"My Account",
           "type":"nested",
           "call_to_actions":[
             {
-              "title":"⭐️ Récents",
+              "title":"Pay Bill",
               "type":"postback",
-              "payload":"TICK_latest_scheduled_state_machines_init"
+              "payload":"PAYBILL_PAYLOAD"
             },
             {
-              "title":"🎩 Au hasard",
-              "type":"postback",
-              "payload":"TICK_topic_hat_init"
-            },
-            {
-              "title":"🔍 Liste",
               "type":"web_url",
-              "url":"https://app.hellojam.fr/stories",
-              "messenger_extensions":true
-            }
-          ]
-        },
-        {
-          "title":"⚙️ Paramètres",
-          "type":"nested",
-          "call_to_actions":[
-            {
-              "title":"🔕 Gérer les notifications",
-              "type":"postback",
-              "payload":"MORNING_PUSH_SETTINGS"
-            },
-            {
-              "title":"💕 Partager Jam",
-              "type":"postback",
-              "payload":"SHARE_BOT"
-            },
-            {
-              "title":"📣 Donner son avis",
-              "type":"postback",
-              "payload":"FEEDBACK_WORKFLOW"
-            },
-            {
-              "title":"☝️ Aide",
-              "type":"postback",
-              "payload":"HELP"
-            },
-            {
-              "title":"💾 Mes données",
-              "type":"web_url",
-              "url":"https://www.hellojam.fr/privacy_policy"
+              "title":"Latest News",
+              "url":"https://www.messenger.com/",
+              "webview_height_ratio":"full"
             }
           ]
         }
       ]
     }
   ]
-}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=$FB_ACCESS_TOKEN"
-
-
-
+}
 
 Bot.on :message do |message|
   message.reply(text: 'Hello, human! #{ENV["ACCESS_TOKEN"]}')
